@@ -8,7 +8,7 @@ import type { CreateNotePayload, NoteTag } from "../../types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../lib/api";
 import { useRouter } from "next/navigation";
-import { useStore } from "../../lib/globalState";
+import { useStore } from "../../lib/store/noteStore";
 
 interface NoteFormValues {
   title: string;
