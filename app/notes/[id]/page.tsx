@@ -5,11 +5,27 @@ import {
   HydrationBoundary,
 } from "@tanstack/react-query";
 import { getNoteById } from "../../../lib/api";
+import { Metadata } from "next";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> => {
+  const { id } = await params;
+
+  try {
+    const note = await getNoteById(id);
+    return { title: note.title, description: note.content };
+  } catch {
+    return { title: "Note", description: "Note not found" };
+  }
+};
 
 export default async function NoteDetail({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
   const { id } = await params;
 

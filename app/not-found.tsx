@@ -1,3 +1,5 @@
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
 export default function NotFound() {
   return (
     <>
@@ -6,3 +8,8 @@ export default function NotFound() {
     </>
   );
 }
+
+export const metadata: Metadata = {
+  title: "404 - Page not found | NoteHub",
+  description: "Sorry, the page you are looking for does not exist.",
+};
