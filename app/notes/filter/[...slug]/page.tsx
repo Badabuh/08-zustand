@@ -40,6 +40,12 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: "Notes - All",
+        description: "A list of notes filtered by all tags",
+        images: [OG_IMAGE_URL],
+      },
       isInvalid: false,
     };
   }
@@ -64,6 +70,12 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: "Notes - All Tags",
+        description: "A list of notes filtered by all tags",
+        images: [OG_IMAGE_URL],
+      },
       isInvalid: true,
     };
   }
@@ -85,6 +97,12 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `Notes - ${tag}`,
+      description: `A list of notes filtered by ${tag}`,
+      images: [OG_IMAGE_URL],
+    },
     isInvalid: false,
   };
 };
@@ -92,9 +110,10 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
 export const generateMetadata = async ({
   params,
 }: NotesFilterPageProps): Promise<Metadata> => {
-  const { title, description, openGraph } = await getFilterParams(params);
+  const { title, description, openGraph, twitter } =
+    await getFilterParams(params);
 
-  return { title, description, openGraph };
+  return { title, description, openGraph, twitter };
 };
 
 export default async function NotesFilterPage({

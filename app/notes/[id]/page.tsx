@@ -32,6 +32,12 @@ export const generateMetadata = async ({
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: note.title,
+        description: note.content,
+        images: ["https://ac.goit.global/fullstack/react/notehub-og-meta.jpg"],
+      },
     };
   } catch {
     return { title: "Note", description: "Note not found" };
