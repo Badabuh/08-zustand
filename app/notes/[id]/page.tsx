@@ -16,7 +16,23 @@ export const generateMetadata = async ({
 
   try {
     const note = await getNoteById(id);
-    return { title: note.title, description: note.content };
+    return {
+      title: note.title,
+      description: note.content,
+      openGraph: {
+        title: note.title,
+        description: note.content,
+        url: `https://notehub.app/notes/${id}`,
+        images: [
+          {
+            url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+            width: 1200,
+            height: 630,
+            alt: note.title,
+          },
+        ],
+      },
+    };
   } catch {
     return { title: "Note", description: "Note not found" };
   }

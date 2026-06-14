@@ -1,4 +1,4 @@
-import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+import { Metadata } from "next";
 
 export default function NotFound() {
   return (

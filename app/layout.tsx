@@ -13,8 +13,21 @@ const roboto = Roboto({
   display: "swap",
 });
 export const metadata: Metadata = {
-  title: "",
+  title: "Notes",
   description: "A simple and efficient note-taking application.",
+  openGraph: {
+    title: "Notes",
+    description: "A list of notes",
+    url: "https://notehub.app/notes/filter/all",
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Notes",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

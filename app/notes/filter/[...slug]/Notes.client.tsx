@@ -35,11 +35,13 @@ export default function NotesClient({ tag }: { tag?: NoteTag }) {
 
   const pageCount = Math.max(data?.totalPages ?? 0, 1);
 
-  const debouncedSetText = useDebouncedCallback(setText, 300);
+  const debouncedSetText = useDebouncedCallback((value: string) => {
+    setText(value);
+    setCurrentPage(1);
+  }, 300);
 
   const handleSearchChange = (value: string) => {
     debouncedSetText(value);
-    setCurrentPage(1);
   };
 
   return (
@@ -60,7 +62,7 @@ export default function NotesClient({ tag }: { tag?: NoteTag }) {
           Create note +
         </button>
       </header>
-      <NoteList notes={data?.notes ?? []} />
+      {data && data.notes.length > 0 && <NoteList notes={data?.notes ?? []} />}
     </div>
   );
 }

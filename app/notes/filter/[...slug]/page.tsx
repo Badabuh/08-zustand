@@ -14,6 +14,10 @@ interface NotesFilterPageProps {
   }>;
 }
 
+const SITE_URL = "https://notehub.app";
+const OG_IMAGE_URL =
+  "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
+
 const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
   const { slug } = await params;
   const rawTag = slug[0];
@@ -22,6 +26,21 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
     return {
       tag: undefined,
       title: "Notes - All",
+      description: "A list of notes filtered by all tags",
+      openGraph: {
+        title: "Notes - All",
+        description: "A list of notes filtered by all tags",
+        url: `${SITE_URL}/notes/filter/all`,
+        images: [
+          {
+            url: OG_IMAGE_URL,
+            width: 1200,
+            height: 630,
+            alt: "Notes - All",
+          },
+        ],
+      },
+      isInvalid: false,
     };
   }
 
@@ -32,6 +51,19 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
       tag: undefined,
       title: "Notes - All Tags",
       description: "A list of notes filtered by all tags",
+      openGraph: {
+        title: "Notes - All Tags",
+        description: "A list of notes filtered by all tags",
+        url: `${SITE_URL}/notes/filter/all`,
+        images: [
+          {
+            url: OG_IMAGE_URL,
+            width: 1200,
+            height: 630,
+            alt: "Notes - All Tags",
+          },
+        ],
+      },
       isInvalid: true,
     };
   }
@@ -43,10 +75,15 @@ const getFilterParams = async (params: NotesFilterPageProps["params"]) => {
     openGraph: {
       title: `Notes - ${tag}`,
       description: `A list of notes filtered by ${tag}`,
-      url: `https://ac.goit.global/fullstack/react/notehub-og-meta.jpg`,
-      width: 1200,
-      height: 630,
-      alt: `Notes - ${tag}`,
+      url: `${SITE_URL}/notes/filter/${tag}`,
+      images: [
+        {
+          url: OG_IMAGE_URL,
+          width: 1200,
+          height: 630,
+          alt: `Notes - ${tag}`,
+        },
+      ],
     },
     isInvalid: false,
   };
