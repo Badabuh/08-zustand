@@ -1,5 +1,5 @@
 "use client";
-import css from "./App.module.css";
+import css from "./NotesPage.module.css";
 import Pagination from "../../../../components/Pagination/Pagination";
 import SearchBox from "../../../../components/SearchBox/SearchBox";
 import { useQuery } from "@tanstack/react-query";
